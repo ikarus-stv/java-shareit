@@ -29,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item updateItem(Integer userId, Integer itemId, ItemUpdateDto updateDto) {
         Item item = itemRepository.getItemById(itemId);
-        if (item.getOwner() != userId) {
+        if (!item.getOwner().equals(userId)) {
             throw new InvalidUserException("");
         }
 
