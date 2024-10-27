@@ -20,29 +20,29 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping
-    Item createItem(@RequestHeader("X-Sharer-User-Id") Integer userId, @Valid @RequestBody ItemCreateDto createDto) {
+    public Item createItem(@RequestHeader("X-Sharer-User-Id") Integer userId, @Valid @RequestBody ItemCreateDto createDto) {
         Item item = itemService.createItem(userId, createDto);
         return item;
     }
 
     @PatchMapping("/{itemId}")
-    Item updateItem(@RequestHeader("X-Sharer-User-Id") Integer userId, @PathVariable Integer itemId, @Valid @RequestBody ItemUpdateDto updateDto) {
+    public Item updateItem(@RequestHeader("X-Sharer-User-Id") Integer userId, @PathVariable Integer itemId, @Valid @RequestBody ItemUpdateDto updateDto) {
         Item item = itemService.updateItem(userId, itemId, updateDto);
         return item;
     }
 
     @GetMapping
-    Collection<Item> getItemsByUser(@RequestHeader("X-Sharer-User-Id") Integer userId) {
+    public Collection<Item> getItemsByUser(@RequestHeader("X-Sharer-User-Id") Integer userId) {
         return itemService.getItemsByUser(userId);
     }
 
     @GetMapping("/{itemId}")
-    Item getItemById(@PathVariable Integer itemId) {
+    public Item getItemById(@PathVariable Integer itemId) {
         return itemService.getItemById(itemId);
     }
 
     @GetMapping("/search")
-    Collection<Item> getItemsByText(@RequestParam("text") String text) {
+    public Collection<Item> getItemsByText(@RequestParam("text") String text) {
         return itemService.getItemsByText(text);
     }
 

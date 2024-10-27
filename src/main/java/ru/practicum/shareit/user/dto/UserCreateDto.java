@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class UserCreateDto {
     @NotBlank
-    String name;
+    private String name;
     @Email
     @NotBlank
-    String email;
+    private String email;
 }
