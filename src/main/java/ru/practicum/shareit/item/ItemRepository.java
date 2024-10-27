@@ -4,10 +4,7 @@ import org.springframework.stereotype.Component;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.item.model.Item;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class ItemRepository {
@@ -42,12 +39,13 @@ public class ItemRepository {
 
     public Collection<Item> getItemsByText(String text) {
         if (text.isEmpty()) {
-            return Collections.EMPTY_LIST;
+            return new ArrayList<>();
         }
         String upperText = text.toUpperCase();
         return itemMap.values().stream()
                 .filter(item -> item.getAvailable() && (item.getName().toUpperCase().contains(upperText)
                         || item.getDescription().toUpperCase().contains(upperText)))
                 .toList();
+
     }
 }
