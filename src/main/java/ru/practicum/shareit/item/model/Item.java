@@ -1,18 +1,30 @@
 package ru.practicum.shareit.item.model;
 
-import lombok.Builder;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 /**
  * TODO Sprint add-controllers.
  */
-@Data
-@Builder
+
+@Entity
+@Table(name = "items", schema = "public")
+@Getter
+@Setter
+@ToString
+
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String name;
+    @Column
     private String description;
+    @Column
     private Boolean available;
+    @Column
     private Integer owner;
+    @Column
     private Integer request;
 }

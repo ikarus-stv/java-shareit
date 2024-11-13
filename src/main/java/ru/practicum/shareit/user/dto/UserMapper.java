@@ -12,10 +12,10 @@ public class UserMapper {
     }
 
     public static User userCreateDto2User(UserCreateDto uc) {
-        return User.builder()
-                .name(uc.getName())
-                .email(uc.getEmail())
-                .build();
+        User  result = new User();
+        result.setName(uc.getName());
+        result.setEmail(uc.getEmail());
+        return result;
     }
 
     public static void updateUser(User user, UserUpdateDto userUpdateDto) {

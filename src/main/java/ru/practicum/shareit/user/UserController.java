@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.user.dto.UserCreateDto;
+import ru.practicum.shareit.user.dto.UserDto;
+import ru.practicum.shareit.user.dto.UserMapper;
 import ru.practicum.shareit.user.dto.UserUpdateDto;
 
 @RestController
@@ -23,8 +25,10 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable Integer userId) {
-        return userService.getUserById(userId);
+    public UserDto getUser(@PathVariable Integer userId) {
+        User user = userService.getUserById(userId);
+        UserDto userDto = UserMapper.toUserDto(user);
+        return userDto;
     }
 
     @DeleteMapping("/{userId}")
