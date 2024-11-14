@@ -109,18 +109,3 @@ public class ItemServiceImpl implements ItemService {
         return itemDtoWide;
     }
 }
-
-/*
-    private Optional<LocalDateTime> getLastBookingEndDate(Long itemId) {
-        return bookingRepository.findLastBookingEndByItemId(itemId)
-                .stream()
-                .max(Comparator.naturalOrder());
-    }
-
-    private Optional<LocalDateTime> getNextBookingStartDate(Long itemId) {
-        return bookingRepository.findNextBookingStartByItemId(itemId)
-                .stream()
-                .min(Comparator.naturalOrder());
-    }
-
- */
