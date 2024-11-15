@@ -15,4 +15,6 @@ public interface ItemMapperByLibrary {
 
     ItemDto toItemDto(Item item);
 
+    ItemDtoWide toDtoWide(Item item);
+
 }

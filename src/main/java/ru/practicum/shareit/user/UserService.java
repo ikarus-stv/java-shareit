@@ -13,20 +13,23 @@ public class UserService {
 
     public User addUser(UserCreateDto userCreateDto) {
         User user = UserMapper.userCreateDto2User(userCreateDto);
-        return userRepository.addUser(user);
+        user = userRepository.save(user);
+        return user;
     }
 
     public User updateUser(Integer userId, UserUpdateDto userUpdateDto) {
-        User user = userRepository.getUserById(userId);
+        User user = userRepository.getReferenceById(userId);
         UserMapper.updateUser(user, userUpdateDto);
-        return userRepository.updateUser(userId, user);
+        user.setId(userId);
+        return userRepository.save(user);
     }
 
     public User getUserById(Integer userId) {
-        return userRepository.getUserById(userId);
+        return userRepository.getReferenceById(userId);
     }
 
     public void deleteUser(Integer userId) {
-        userRepository.deleteUser(userId);
+        User user = userRepository.getReferenceById(userId);
+        userRepository.delete(user);
     }
 }
