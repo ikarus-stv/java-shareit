@@ -38,18 +38,13 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item updateItem(Integer userId, Integer itemId, ItemUpdateDto updateDto) {
-        Item item = itemRepository.getReferenceById(itemId);
+        Item item = itemRepository.findById(itemId).get();
         if (!item.getOwner().equals(userId)) {
             throw new InvalidUserException("");
         }
 
         ItemMapper.updateFromUpdateDto(item, updateDto);
         return itemRepository.save(item);
-    }
-
-    @Override
-    public Item getItemById(Integer itemId) {
-        return itemRepository.getReferenceById(itemId);
     }
 
     @Override

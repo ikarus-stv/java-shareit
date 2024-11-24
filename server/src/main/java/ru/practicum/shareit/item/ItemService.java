@@ -10,8 +10,6 @@ public interface ItemService {
 
     Item updateItem(Integer userId, Integer itemId, ItemUpdateDto updateDto);
 
-    Item getItemById(Integer itemId);
-
     Collection<Item> getItemsByUser(Integer userId);
 
     Collection<Item> getItemsByText(String text);

@@ -50,7 +50,8 @@ public class ItemRequestService {
     }
 
     public ItemRequestDto getRequestById(Integer requestId) {
-        ItemRequestDto result = mapper.itemRequest2Dto(repository.findById(requestId).orElseThrow(() -> new NotFoundException("Запрос " + requestId + " не найден")));
+        ItemRequestDto result = mapper.itemRequest2Dto(repository.findById(requestId)
+                .orElseThrow(() -> new NotFoundException("Запрос " + requestId + " не найден")));
         populate(result);
         return result;
     }

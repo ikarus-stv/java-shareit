@@ -1,14 +1,18 @@
 package ru.practicum.shareit.booking.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
 
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class BookingCreateDto {
     @NotNull
     @Future

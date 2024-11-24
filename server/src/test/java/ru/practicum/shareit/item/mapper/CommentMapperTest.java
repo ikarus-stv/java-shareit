@@ -10,6 +10,7 @@ import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CommentMapperTest {
     private CommentMapper commentMapper = Mappers.getMapper(CommentMapper.class);
@@ -47,4 +48,12 @@ public class CommentMapperTest {
         assertEquals(commentDto.getAuthor(), comment.getAuthor());
         assertEquals(commentDto.getItem(), comment.getItem());
     }
+
+    @Test
+    void nullMappingsTest() {
+        assertNull(commentMapper.fromCreateDto(null));
+        assertNull(commentMapper.toDto(null));
+        assertNull(commentMapper.toListCommentDto(null));
+    }
+
 }

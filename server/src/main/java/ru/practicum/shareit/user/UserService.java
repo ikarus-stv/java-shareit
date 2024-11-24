@@ -25,7 +25,7 @@ public class UserService {
     }
 
     public User getUserById(Integer userId) {
-        return userRepository.getReferenceById(userId);
+        return userRepository.findById(userId).get();
     }
 
     public void deleteUser(Integer userId) {
