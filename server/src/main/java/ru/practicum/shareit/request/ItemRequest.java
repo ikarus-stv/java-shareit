@@ -7,15 +7,11 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-/**
- * TODO Sprint add-item-requests.
- */
 @Entity
 @Table(name = "requests", schema = "public")
 @Getter
 @Setter
 @ToString
-
 public class ItemRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

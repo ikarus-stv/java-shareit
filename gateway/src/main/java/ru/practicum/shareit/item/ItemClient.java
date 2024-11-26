@@ -45,29 +45,14 @@ public class ItemClient extends BaseClient {
         return get("/" + itemId);
     }
 
-    //@GetMapping("/search")
     public ResponseEntity<Object> getItemsByText(String text) {
         Map<String, Object> parameters = Map.of("text", text);
 
         return get("/search?text={text}", 0L, parameters);
     }
 
-    // @PostMapping("/{itemId}/comment")
     public ResponseEntity<Object> createComment(Integer userId, Integer itemId, CommentCreateDto createDto) {
         return post("/" + itemId + "/comment", userId, createDto);
     }
 
-/*
-    public ResponseEntity<Object> updateUser(Integer userId, UserUpdateDto userUpdateDto) {
-        return patch("/"+userId, userUpdateDto);
-    }
-
-    public ResponseEntity<Object> getUserById(Integer userId) {
-        return get("/"+userId);
-    }
-
-    public ResponseEntity<Object> deleteUser(Integer userId) {
-        return delete("/"+userId);
-    }
-*/
 }
